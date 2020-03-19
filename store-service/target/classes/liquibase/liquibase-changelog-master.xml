@@ -7,7 +7,6 @@
     <include file="changelog/01-create-brand-table.xml" relativeToChangelogFile="true"/>
     <include file="changelog/02-create-type-table.xml" relativeToChangelogFile="true"/>
     <include file="changelog/03-create-product-table.xml" relativeToChangelogFile="true"/>
-    <include file="changelog/04-create-address-table.xml" relativeToChangelogFile="true"/>
-    <include file="changelog/05-create-store-point-table.xml" relativeToChangelogFile="true"/>
-    <include file="changelog/06-create-linked-store-product-table.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/04-create-store-point-table.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/05-create-linked-store-product-table.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>

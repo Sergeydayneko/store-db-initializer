@@ -4,23 +4,21 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-    <changeSet author="sdayenko" id="pr-4">
-        <preConditions>
-            <not><tableExists tableName="address"/></not>
+    <changeSet author="sdayneko" id="pr-1">
+        <preConditions onFail="WARN">
+            <not><tableExists tableName="brand"/></not>
         </preConditions>
-        <createTable schemaName="purchase_management" tableName="address">
-            <column name="address_id" type="INTEGER" autoIncrement="true">
+        <createTable schemaName="purchase_management" tableName="brand">
+            <column name="brand_id" type="INTEGER" autoIncrement="true">
                 <constraints
                         primaryKey="true"
-                        primaryKeyName="address_pk"
+                        primaryKeyName="brand_pkey"
                         unique="true"/>
             </column>
-            <column name="street_name" type="VARCHAR(50)">
+            <column name="brand_name" type="VARCHAR(50)">
                 <constraints nullable="false" unique="true"/>
-            </column>
-            <column name="street_number" type="INTEGER"> <!-- Make varchar and set regex constraint -->
-                <constraints nullable="false"/>
             </column>
         </createTable>
     </changeSet>
+
 </databaseChangeLog>
