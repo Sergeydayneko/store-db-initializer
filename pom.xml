@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <modules>
+        <module>store-service</module>
+    </modules>
+    <groupId>ru.dayneko</groupId>
+    <artifactId>clothes-database-service</artifactId>
+    <version>1</version>
+    <name>clothes-database-service</name>
+    <description>Clothes database integration service</description>
+    <packaging>pom</packaging>
+
+    <properties>
+        <java.version>11</java.version>
+        <snakeyaml.version>1.23</snakeyaml.version>
+        <liquibase.version>3.8.7</liquibase.version>
+        <postgresql.version>42.2.11</postgresql.version>
+        <snakeyaml.version>1.26</snakeyaml.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <version>${liquibase.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>${snakeyaml.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
+        </dependency>
+    </dependencies>
+
+    <!-- Plugin also generates changeSet -->
+
+
+    <!-- Сделать настройку профилей -->
+</project>

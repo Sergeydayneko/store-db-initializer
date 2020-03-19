@@ -1,0 +1,33 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet author="sdayneko" id="pr-6">
+        <preConditions onFail="WARN">
+            <not><tableExists tableName="linked_store_product"/></not>
+        </preConditions>
+        <createTable schemaName="purchase_management" tableName="linked_store_product">
+            <column name="product_id" type="INTEGER">
+                <constraints
+                        nullable="false"
+                        foreignKeyName="linked_product_fk"
+                        referencedTableSchemaName="purchase_management"
+                        referencedTableName="product"
+                        referencedColumnNames="product_id"
+                    />
+            </column>
+            <column name="store_id" type="INTEGER">
+                <constraints
+                        nullable="false"
+                        foreignKeyName="linked_store_fk"
+                        referencedTableSchemaName="purchase_management"
+                        referencedTableName="store_point"
+                        referencedColumnNames="store_point_id"
+                />
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

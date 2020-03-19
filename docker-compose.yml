@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+
+### DATABASE ###
+  storedb:
+#    image: postgres:latest
+    build: ./initial-database-tools
+    network_mode: bridge
+    container_name: postgres
+#    volumes:
+#      - postgres-data:/var/lib/postgresql/data
+    expose:
+      - 5432
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=store
+    restart: on-failure
+
+### STORE DATABASE SERVICE ###
+  dbservice:
+    build: ./store-service
+    network_mode: bridge
+    container_name: dbservice
+    expose:
+      - 4040
+    ports:
+      - 4040:4040
+    depends_on:
+      - storedb
+    links:
+      - storedb

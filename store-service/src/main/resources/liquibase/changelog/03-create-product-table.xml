@@ -1,0 +1,38 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet author="sdayneko" id="pr-3">
+        <preConditions onFail="WARN">
+            <not><tableExists tableName="product"/></not>
+        </preConditions>
+        <createTable schemaName="purchase_management" tableName="product">
+            <column name="product_id" type="INTEGER" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="product_pkey" unique="true"/>
+            </column>
+            <column name="product_name" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_type" type="INTEGER">
+                <constraints
+                        nullable="true"
+                        foreignKeyName="type_fkey"
+                        referencedTableSchemaName="purchase_management"
+                        referencedTableName="type"
+                        referencedColumnNames="type_id" />
+            </column>
+            <column name="product_brand" type="INTEGER">
+                <constraints
+                        nullable="true"
+                        foreignKeyName="brand_fkey"
+                        referencedTableSchemaName="purchase_management"
+                        referencedTableName="brand"
+                        referencedColumnNames="brand_id"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
+
