@@ -2,25 +2,24 @@ version: "3"
 
 services:
 
-### DATABASE ###
+### SQL DATABASE ###
   storedb:
-#    image: postgres:latest
     build: ./initial-database-tools
     network_mode: bridge
     container_name: postgres
-#    volumes:
-#      - postgres-data:/var/lib/postgresql/data
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
     expose:
       - 5432
     ports:
-      - 5432:5432
+      - 5431:5432
     environment:
       - POSTGRES_PASSWORD=password
       - POSTGRES_USER=postgres
       - POSTGRES_DB=store
     restart: on-failure
 
-### STORE DATABASE SERVICE ###
+### SQL DATABASE STORE SERVICE ###
   dbservice:
     build: ./store-service
     network_mode: bridge
@@ -33,3 +32,8 @@ services:
       - storedb
     links:
       - storedb
+    environment:
+      - LIQUIBSE_URL=jdbc:postgresql://storedb:5431/store
+      - LIQUIBASE_USERNAME=postgres
+      - LIQUIBASE_PASSWORD=password
+      - LIQUIBASE_DATABASE=org.postgresql.Driver
