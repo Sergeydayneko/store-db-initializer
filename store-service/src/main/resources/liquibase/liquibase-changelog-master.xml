@@ -10,4 +10,5 @@
     <include file="changelog/04-create-address-table.xml" relativeToChangelogFile="true"/>
     <include file="changelog/05-create-store-point-table.xml" relativeToChangelogFile="true"/>
     <include file="changelog/06-create-linked-store-product-table.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/07-insert-base-test-values-into-table.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>

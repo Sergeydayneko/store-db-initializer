@@ -1,0 +1,48 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet author="sdayneko" id="pr-7">
+        <insert schemaName="purchase_management" tableName="brand">
+            <column name="brand_name" value="Adidas"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="sdayneko" id="pr-7.1">
+        <insert schemaName="purchase_management" tableName="type">
+            <column name="type_name" value="Hoodie"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="sdayneko" id="pr-7.2">
+        <insert schemaName="purchase_management" tableName="product">
+            <column name="product_name" value="Clothes"/>
+            <column name="product_type" value="1"/>
+            <column name="product_brand" value="1"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="sdayneko" id="pr-7.3">
+        <insert schemaName="purchase_management" tableName="address">
+            <column name="street_name" value="Koroleva"/>
+            <column name="street_number" value="1"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="sdayneko" id="pr-7.4">
+        <insert schemaName="purchase_management" tableName="store_point">
+            <column name="store_point_name" value="Zara"/>
+            <column name="store_point_address_id" value="1"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="sdayneko" id="pr-7.5">
+        <insert schemaName="purchase_management" tableName="linked_store_product">
+            <column name="product_id" value="1"/>
+            <column name="store_id" value="1"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
