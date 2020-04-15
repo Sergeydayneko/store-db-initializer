@@ -8,7 +8,7 @@
     <version>1</version>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>13</java.version>
         <snakeyaml.version>1.23</snakeyaml.version>
         <liquibase.version>3.8.7</liquibase.version>
         <postgresql.version>42.2.11</postgresql.version>
