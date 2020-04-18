@@ -1,5 +1,10 @@
 version: "3"
 
+volumes:
+  elastic01:
+    driver: local
+
+
 services:
 
 ### SQL DATABASE ###
@@ -16,6 +21,14 @@ services:
       - POSTGRES_USER=${POSTGRES_STANDARD_USER:postgres}
       - POSTGRES_DB=store
     restart: on-failure
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 300M
+        reservations:
+          cpus: '0.5'
+          memory: 100M
 
 ### MONGODB DATABASE ###
   productdb:
@@ -48,14 +61,18 @@ services:
     restart: on-failure
 
 ### ELKA STACK ###
-  elk:
-    elk:
-      image: sebp/elk
-      network_mode: bridge
-      container_name: elk
-      ports:
-        - 5601:5601 # Kibana
-        - 9200:9200 # Elastic
-        - 5044:5044 # Logstash
-        - 9300:9300 # Transport interface
-      restart: on-failure
+  elastic01:
+    container_name: elasticsearch
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.2
+    networks:
+      - elk
+    #    volumes:
+    #      - ./data01:/usr/share/elasticsearch/data
+    environment:
+      - node.name=es01
+      - cluster.initial_master_nodes=es01
+      - cluster.name=es-docker-cluster
+      - bootstrap.memory_lock=false
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ports:
+      - 9200:9200
