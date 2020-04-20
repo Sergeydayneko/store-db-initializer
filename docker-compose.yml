@@ -60,14 +60,28 @@ services:
       - 15672:15672
     restart: on-failure
 
-### ELKA STACK ###
+### ELK STACK ###
+  logstash:
+    container_name: logstash
+    image: docker.elastic.co/logstash/logstash:7.6.2
+    environment:
+      XPACK_MONITORING_ENABLED: "false"
+    networks:
+      - elk
+    ports:
+      - 5046:5046
+    volumes:
+      - ./config/pipelines.yml:/usr/share/logstash/config/pipelines.yml:ro
+      - ./config/pipelines:/usr/share/logstash/config/pipelines:ro
+      - ./logs:/usr/share/logstash/input
+
   elastic01:
     container_name: elasticsearch
     image: docker.elastic.co/elasticsearch/elasticsearch:7.6.2
     networks:
       - elk
-    #    volumes:
-    #      - ./data01:/usr/share/elasticsearch/data
+        volumes:
+          - ./data01:/usr/share/elasticsearch/data
     environment:
       - node.name=es01
       - cluster.initial_master_nodes=es01
