@@ -7,5 +7,3 @@ elasticsearch.hosts:
   - "http://elasticsearch02:9200"
 
 xpack.monitoring.ui.container.elasticsearch.enabled: true
-
-#
