@@ -10,3 +10,6 @@ Recommendations:
     1) if *nix system **sysctl -w vm.max_map_count=262144**
     2) if using volumes **chmod g+rwx <es_volume_folder_name>** and  **chgrp 0 <es_volume_folder_name>**
     3) for now using **volumes.\<esnode\>.driver: local**
+
+4. For logstash:
+    1) volumes of logs is setting by corresponding props **logging.file: <file_path_and_name>**

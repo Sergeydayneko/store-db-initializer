@@ -1,0 +1,9 @@
+- pipeline.id: STORE_BASE
+  pipeline.workers: 1
+  pipeline.batch.size: 1
+  path.config: "./config/pipelines/store_base_pipeline.conf"
+
+- pipeline.id: SYSLOG
+  pipeline.workers: 1
+  pipeline.batch.size: 1
+  path.config: "./config/pipelines/syslog.conf"
