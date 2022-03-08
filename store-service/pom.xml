@@ -10,7 +10,7 @@
     <properties>
         <java.version>13</java.version>
         <snakeyaml.version>1.23</snakeyaml.version>
-        <liquibase.version>3.8.7</liquibase.version>
+        <liquibase.version>4.8.0</liquibase.version>
         <postgresql.version>42.2.11</postgresql.version>
         <snakeyaml.version>1.26</snakeyaml.version>
     </properties>
